@@ -1,0 +1,45 @@
+baseURL = "http://localhost:1313/"
+languageCode = "en-us"
+title = "BOULBALAH lAHCEN's Personnal blog"
+theme = "terminal"
+copyright = "BOULBALAH Lahcenr"
+
+
+[params]
+  # blog name content (default is `content/posts`)
+  contentTypeName = "posts"
+  # ["orange", "blue", "red", "green", "pink"]
+  themeColor = "blue"
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 3 
+  # show selector to switch language
+  showLanguageSelector = true 
+  # set theme to full screen width
+  fullWidthTheme = true
+  # center theme with default width
+  centerTheme = true
+	readingTime = true
+  # set a custom favicon (default is a `themeColor` square)
+  #favicon = "favicon.ico"
+
+  [languages]
+  [languages.en]
+    languageName = "English"
+    title = "misarb"
+    subtitle = "Boulbalah Lahcen personnal Blog"
+    keywords = "Rust, Carla, Embedded Systems, Automotive"
+    copyright = "BOULBALAH Lahcen"
+    menuMore = "Show more"
+    readMore = "Read more"
+		missingContentMessage = "Page not found"
+    readOtherPosts = "Read other posts"
+
+    [languages.en.params.logo]
+      logoText = "misarb"
+      logoHomeLink = "/"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
