@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://misarb.github.io/misarb-blog/"
 languageCode = "en-us"
 title = "BOULBALAH lAHCEN's Personnal blog"
 theme = "terminal"
