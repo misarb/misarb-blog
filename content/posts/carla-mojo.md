@@ -79,15 +79,63 @@ we specify the host where the CARLA server is running. If you are running the CA
 
 ### Connecting carla using Mojo
 
-#### mojo Api
 
--
+Here, I will demonstrate how to connect to the CARLA server using the `Mojo language`. In `Mojo`, we have the capability to import and utilize `Python` modules. However, it's important to note that not all Python modules can be seamlessly used in Mojo.
 
-```rust
-//mojo example
+To import a Python module in Mojo, you can simply use the following syntax, which is similar to importing a Python library in Python:
+
+```python
+from python import Python as py
+```
+Now, if you need to import a library like `numpy`, you can do so using the `import_module` methode. It's essential to encapsulate this within a function and specify a raises clause. You might wonder why this is necessary. The reason is that certain modules can potentially raise errors, and Mojo needs to handle these situations. Therefore, to ensure your code compiles correctly, follow the example below:
+
+```python
+from python import Python as py
+fn myModule() raises:
+    let np = py.import_module("numpy")    
 
 ```
+This structure ensures that any potential errors raised by the module are appropriately managed by Mojo, allowing your code to compile without issues.
 
+Now, we will employ the same approach to establish a connection with CARLA and take control of a vehicle by sending commands to a spawned vehicle. Specifically, we will send the commands `steer: 0.0` and `throttle: 0.3`. Our objective is to have the vehicle move in a straight line.
+
+```python
+from python import Python as py
+
+  fn main() raises:
+      print("Welcom to the first Mojo Carla call")
+      let carla = py.import_module("carla")
+      let random = py.import_module("random")
+      let client = carla.Client("localhost", 2000)
+      let world = client.get_world()
+      let blueprint_library = world.get_blueprint_library()
+      let model_3 = blueprint_library.filter("vehicle.audi.a2")[0]
+      let spawan_point = random.choice(world.get_map().get_spawn_points())
+      let vehicle = world.spawn_actor(model_3, spawan_point)
+      let control = carla.VehicleControl()
+      print(vehicle)
+
+      while True:
+          control.steer = 0.0
+          control.throttle = 0.3
+          control.brake = 0.0
+          control.hand_brake = False
+          # send control to the vehicle in carla
+          _ = vehicle.apply_control(control)
+          print("steer = ", control.steer)
+        client.set_timeout(2.0)
+
+```
+To execute the code below, please follow these steps:
+
+1- Place the code in the `pythonAPI` folder of your CARLA installation.       
+2- Start your CARLA server.   
+3- Run the Mojo code using the following command:
+
+```js
+  mojo file_name.mojo
+```
+Congratulations! You've successfully run the MojoAPI for CARLA.
 
 ## Conclusion:
  
