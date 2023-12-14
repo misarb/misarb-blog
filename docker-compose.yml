@@ -1,0 +1,15 @@
+version: '3'
+services:
+  hugo:
+      image: klakegg/hugo
+      container_name: myblog_hugo
+      command: server
+      volumes:
+        - ".:/src"
+      ports:
+         - "1313:1313"
+     
+
+
+
+
