@@ -3,6 +3,8 @@ services:
   hugo:
       image: klakegg/hugo
       container_name: myblog_hugo
+      build:
+        dockerfile: ./Dockerfile/.Dockerfile
       command: server
       volumes:
         - ".:/src"
