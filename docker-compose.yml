@@ -1,13 +1,14 @@
-version: '3'
+version: '3.8'
 services:
   hugo:
       image: klakegg/hugo
       container_name: myblog_hugo
       build:
-        dockerfile: ./Dockerfile/.Dockerfile
+        context: .
+        dockerfile: ./Dockerfile/blogBuild.Dockerfile
       command: server
       volumes:
-        - ".:/src"
+        - ".:/misarb/src"
       ports:
          - "1313:1313"
      
