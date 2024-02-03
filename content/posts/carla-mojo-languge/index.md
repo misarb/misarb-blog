@@ -7,6 +7,16 @@ keywords = ["carla", "mojo programming"]
 description = "Connecting carla using mojo as an API insted of using python"
 showFullContent = false
 +++
+# Table of contents
+
+1. [Introduction](#introduction)
+2. [Brief introducation about mojo](#brief-introducation-about-mojo)
+3. [Carla Api using Python ](#carla-api-using-python)
+4. [Connecting carla using Mojo](#connecting-carla-using-mojo)
+5. [Conclusion](#conclusion)
+6. [Resources](#resources)
+
+
 
 ## Introduction
 
@@ -14,7 +24,7 @@ showFullContent = false
 
 **Disclaimer**: This post is not intended as a Mojo tutorial; it focuses on exploring a *potential use case of Mojo with the CARLA simulator*. If you're interested in learning more about Mojo, be sure to check out the resources section, where I'll include some useful links.
 
-### Brief introducation about mojo
+## Brief introducation about mojo
 
   `Mojo` is a programming language that seamlessly marries the performance and control typically associated with system languages like `C++` and `Rust` with the flexibility and ease of use found in dynamic languages such as `Python`. This unique blend of attributes positions **Mojo as a powerful choice for constructing high-performance systems and a compelling option for AI development**.
 
@@ -31,7 +41,7 @@ The inception of `Mojo` can be credited to Modular, a company with a vision to d
 ```
 In `Mojo`, you have the ability to specify the types of your variables. Notably, the `Int` type in `Mojo`, with a capital `I` differs from `Python`'s `int`. While Python's `int` can manage large numbers and offers additional features like object identity checks, it can introduce some performance overhead. In contrast, Mojo's `Int` is purpose-built for simplicity and speed, optimized to efficiently leverage your computer's hardware.
 
-### Carla Api using Python 
+## Carla Api using Python 
 
 CARLA is a versatile simulator that provides an environment for algorithm testing, custom map creation, and the evaluation of Advanced Driver Assistance Systems (ADAS) functionality. To connect to CARLA, developers make use of an API. By creating a Python script, you can establish a connection with the CARLA server, enabling you to send commands for vehicle control within the simulator and retrieve data from sensors and other sources. Here's how you can achieve this with Python
 
@@ -77,7 +87,7 @@ we specify the host where the CARLA server is running. If you are running the CA
 
 ```
 
-### Connecting carla using Mojo
+## Connecting carla using Mojo
 
 
 Here, I will demonstrate how to connect to the CARLA server using the `Mojo language`. In `Mojo`, we have the capability to import and utilize `Python` modules. However, it's important to note that not all Python modules can be seamlessly used in Mojo.
@@ -137,13 +147,13 @@ To execute the code below, please follow these steps:
 ```
 Congratulations! You've successfully run the MojoAPI for CARLA.
 
-## Conclusion:
+## Conclusion
  
 - Mojo is a very interesting language, with immense potential. However, it's important to note that the community around Mojo is still relatively small.
 
 - One of the most intriguing aspects is the prospect of witnessing substantial projects leverage Mojo with CARLA simulator, particularly when implementing Advanced Driver Assistance Systems (ADAS) functionality using AI. This combination allows developers to harness the power of the Mojo language for complex control algorithms, like Linear Model Predictive Control (Linear-MPC), which demand significant computational resources.
 
-## Resources:
+## Resources
 
 In this section I tried to compile a bunch of links that might help when trying
 to learn/understand the things mentioned above, feel free to read at your own
