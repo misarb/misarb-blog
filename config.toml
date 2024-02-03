@@ -1,4 +1,4 @@
-baseURL = "https://misarb.github.io/"
+baseURL = "https://misarb.github.io/misarb-blog/"
 languageCode = "en-us"
 title = "BOULBALAH lAHCEN's Personnal blog"
 theme = "terminal"
@@ -34,12 +34,20 @@ copyright = "BOULBALAH Lahcenr"
 		missingContentMessage = "Page not found"
     readOtherPosts = "Read other posts"
 
-    [languages.en.params.logo]
+     [languages.en.params.logo]
       logoText = "misarb"
-      logoHomeLink = "/"
+      logoHomeLink = "https://misarb.github.io/misarb-blog/"
 
     [languages.en.menu]
       [[languages.en.menu.main]]
         identifier = "about"
-        name = "About"
+        name = "About me"
         url = "/about"
+        weight = 1
+
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Posts"
+        url = "/"
+        weight = 2
+
