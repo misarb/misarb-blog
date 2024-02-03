@@ -7,14 +7,23 @@ keywords = ["carla", "Docker","Container","Build"]
 description = "Building Carla from source using Docker to simplifie the build"
 showFullContent = false
 +++
+# Table of contents
+1. [Introduction](#introduction)
+2. [Brief introducation about docker](#brief-introducation-about-docker)
+3. [Buildingcarla from source using the dockerfile](#building-carla-from-source-using-the-dockerfile)
+4. [Troublshoting](#troublshoting)
+5. [Conclusion](#conclusion)
+6. [Resources](#resources)
 
-## Introduction
+
+
+##  Introduction
 
 - In this article, I will discuss the process of constructing Carla PythonAPI or building Carla from source using a Dockerfile. The aim is to streamline the procedure and circumvent various issues that may arise when attempting to build it on a conventional host machine.
 
 
 
-### Brief introducation about Docker
+###  Brief introducation about Docker
 
   `Docker` is  Docker is a platform that simplifies software development by packaging applications and their dependencies into `containers`. 
   `Containers` are lightweight, portable, and enable consistent deployment across different environments. With Docker, developers can create, share, and run applications seamlessly. 
@@ -97,7 +106,7 @@ To create and execute a Docker image using the supplied Dockerfile for CARLA, yo
 ```bash
     docker ps
 ```
-### Building carla from source using the Dockerfile
+###  Building carla from source using the Dockerfile
 
 In this segment, we'll delve into a comprehensive approach to assemble all the essential dependencies required for building CARLA from source. The motivation behind this is to construct CARLA from source, enabling its utilization across various architectures such as ARM and accommodating diverse use cases. Our Dockerfile is specifically tailored for PythonAPI, facilitating the construction from source to generate both the .egg file and .whl file. Should you wish to build CARLA along with PythonAPI, simply uncomment the relevant section to include it in the image.
 
@@ -254,11 +263,11 @@ Welcome to the world of intricate software development – where navigating thro
 
 And after rebuilding the image, voilà, everything works! However, remember to include the specific version of CARLA you've cloned to override potential issues. Mixing versions can lead to compatibility problems.
 
-## Conclusion:
+##  Conclusion
  
 In summary, building CARLA's PythonAPI from source involves meticulous Dockerfile configurations, addressing version-specific challenges, and resolving compatibility warnings. Navigating these intricacies leads to a robust development environment and a gratifying coding experience. Happy coding!
 
-## Resources:
+##  Resources
 
 - [Dockerfile used in this article ](https://github.com/misarb/CarlaBuild)
 - [Carla doc](https://carla.readthedocs.io/en/0.9.14/)
