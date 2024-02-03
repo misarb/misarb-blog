@@ -2,10 +2,12 @@
 FROM klakegg/hugo
 
 # Set the working directory to the Hugo site directory
-WORKDIR /usr/src/app
+WORKDIR /misarb/src
 
-# Copy the current directory contents into the container at /usr/src/app
+# Copy the current directory contents into the container at /usr/src
 COPY . .
+
+
 
 
 
