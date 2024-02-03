@@ -14,9 +14,12 @@ In the fast-evolving landscape of programming languages, Rust has emerged as a r
 
 In today's blog post, we delve into the world of Rust threads, unraveling the intricacies of how they function and exploring practical examples of how they can be employed to enhance the performance of your code. Whether you are a seasoned Rust developer or someone just starting to explore the language, understanding the fundamentals of Rust threads is crucial for unlocking the full potential of concurrent programming.
 
-# Introduction to Rust Threads
-![](../../docs/assets/thread/rust-thread.png)
-![Book logo](/misarb-blog/docs/assets/thread/rust-thread.png)
+# Introduction to Rust Threads /images
+<!-- ![](../../docs/assets/thread/rust-thread.png) -->
+<img src="{{site.url}}/docs/assets/thread/rust-thread.png" style="display: block; margin: auto;" />
+<img src="{{site.url}}/images/rust-thread.png" style="display: block; margin: auto;" /> 
+<img src="http://localhost:1313/images/rust-thread.png" style="display: block; margin: auto;" /> 
+<!-- ![Book logo](../../docs/assets/thread/rust-thread.png) -->
 
 <!-- {{< figure src="/docs/assets/thread/rust-thread.png" alt="Single thread vs MultiThread" position="center" style="border-radius: 8px;" >}} -->
 
