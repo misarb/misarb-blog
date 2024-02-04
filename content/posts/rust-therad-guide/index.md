@@ -13,10 +13,9 @@ showFullContent = false
 2. [ what is Threads](#whats-threads)
 3. [ Creation of Threads in Rust](#Creating-of-Thread-in-Rust)
 4. [ Thread Communication](#Thread-Communication)
-5. [ Practical Examples](#practical-examples)
-6. [ Performance Benefits](#performance-benefits)
-7. [ Use Cases](#use-cases)
-8. [ Conclusion](#conclusion)
+5. [ Performance Benefits](#performance-benefits)
+6. [ Use Cases](#use-cases)
+7. [ Conclusion](#conclusion)
 
 
 ## Introduction
@@ -72,9 +71,8 @@ In Rust we can crate a thread using `thread::spawn()` function from `std` module
 ```
 In concurrent programming, managing threads involves more than just launching them. The concept of a **thread handle** becomes crucial for interacting with and controlling the behavior of the spawned thread.
 
-***Importance of the `Handle` Variable***
-
 `Thread Control:` The handle variable returned by `thread::spawn` is a handle to the newly created thread. It allows the main thread to interact with the spawned thread's execution.
+
 `Waiting for Completion:` One common use of the handle is to wait for the spawned thread to complete its execution. This is achieved through the `join` method on the handle, which effectively pauses the main thread until the spawned thread finishes.
 
 
@@ -128,19 +126,22 @@ Thread communication is a critical aspect of concurrent programming, enabling th
 
 1- Message Passing
 
-{{< figure src="./images/mpsc-general.png" alt="mpsc" position="center" style="border-radius: 8px;" caption="mpsc: Multi-producer Single Consumer" captionPosition="center" captionStyle="color: white;" >}} 
-
  * Channels :
  Rust provides channels, a communication primitive that allows threads to send messages to each other. A channel consists of a sender and a receiver. The sender can transmit data to the receiver, establishing a simple and effective means of communication.
 
+{{< figure src="./images/mpsc-general.png" alt="mpsc" position="center" style="border-radius: 8px;" caption="mpsc: Multi-Producer Single Consumer" captionPosition="center" captionStyle="color: white;" >}} 
 
 
-Each channel has two ends — sender and receiver. It is also unidirectional — the messages can only be passed from the sender to the receiver, never other way around. What is specific to MPSC channels, is that there can be many senders (message producers), but there’s always only one receiver (consumer).
+
+
+Each channel has two ends — sender and receiver. It is also unidirectional the messages can only be passed from the sender to the receiver, never other way around. What is specific to MPSC channels, is that there can be many senders **message producers**, but there’s always only one receiver **consumer**.
+
+Let's see how we can apply this in a Rust code. We will follow the figure below, where we have three messages in a spawned thread and send them from one thread to another—the main thread—to establish communication between these two threads. 
 
 {{< figure src="./images/mpsc-rust-example.png" alt="mpsc" position="center" style="border-radius: 8px;with=956 ;height=200" caption="Rust Example for mpsc" captionPosition="center" captionStyle="color: white;" >}} 
 
 ``` Rust 
-    ususe std::thread;
+    use std::thread;
     use std::sync::mpsc;
 
     fn main() {
@@ -159,8 +160,56 @@ Each channel has two ends — sender and receiver. It is also unidirectional —
     }
 
 ```
+OUTPUT :
+``` 
+    misarb
+    lboulbalah
+    hello Rust
+```
+2- Mutual Exclusion (Mutex)
 
-## Practical Examples
+Mutex is an abbreviation for **Mutual Exclusion** It is a synchronization primitive used in concurrent programming to enforce exclusive access to a shared resource or data. 
+It's provide a mechanism for mutually excluding multiple threads from accessing a critical section of code simultaneously.
+
+
+{{< figure src="./images/mutex.png" alt="mpsc" position="center" style="border-radius: 8px;with=956 ;height=200" caption="Mutex: Mutual Exclusion" captionPosition="center" captionStyle="color: white;" >}} 
+
+In Rust, the `Mutex` type is part of the standard library and is implemented as `std::sync::Mutex` . It allows threads to **`lock`** and **`unlock`** access to shared data, ensuring that only one thread can modify the data at a time, preventing data races and maintaining data integrity.
+
+``` Rust
+use std::thread;
+use std::sync::{Arc, Mutex};
+
+fn main() {
+        // shared counter with a Mutex
+        let counter = Arc::new(Mutex::new(0));
+
+        // vector to store thread handles
+        let mut handles = vec![];
+
+        // Spawning multiple threads to increment the counter
+        for _ in 0..5 {
+            let counter = Arc::clone(&counter);
+            let handle = thread::spawn(move || {
+                // Acquiring the lock to modify the shared data
+                let mut data = counter.lock().unwrap();
+                *data += 1;
+            });
+            handles.push(handle);
+        }
+
+        // Waiting for all threads to finish
+        for handle in handles {
+            handle.join().unwrap();
+        }
+
+        // Accessing the final value of the shared counter
+        println!("Counter: {}", *counter.lock().unwrap());
+    }
+
+```
+In this example, the `Mutex` ensures that only one thread at a time can modify the shared **counter**. The lock method is used to acquire the lock before accessing or modifying the shared data, and the lock is automatically released when the variable data goes out of scope, allowing other threads to acquire the lock.
+
 
 ## Use Cases
 
